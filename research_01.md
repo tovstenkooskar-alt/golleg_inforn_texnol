@@ -14,6 +14,7 @@
 *   **Как это выглядело бы в Network?**
     Во вкладке Network это выглядело бы как непрерывная очередь из `POST` или `WebSocket` (WS) запросов к стороннему домену аналитики. Внутри вкладки Payload (или Messages для веб-сокетов) летел бы огромный массив JSON-объектов с временными метками (`timestamp`), координатами мыши (`x: 120, y: 350`) и событиями клавиатуры (`event: "keydown", key: "A"`).
 
+
 ### 2. Источники
 
 1.  **Первичный источник:** Научный отчет исследователей Принстонского университета: Steven Englehardt, Gunes Acar, Arvind Narayanan *"No boundaries: Exfiltration of personal data by session-replay scripts"* (2017).
