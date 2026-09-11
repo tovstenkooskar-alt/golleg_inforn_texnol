@@ -1,0 +1,60 @@
+# Домашняя работа №1. Журнал событий на сайтах
+
+## 1. Карта событий на втором сайте (YouTube Music)
+
+В качестве второго сайта для анализа выбран стриминговый сервис YouTube Music. Зафиксировано 5 ключевых событий (через Fetch/XHR во вкладке Network).
+
+1. Телеметрия воспроизведения трека (Watchtime)
+    ```text
+    Request URL: [https://music.youtube.com/api/stats/watchtime](https://music.youtube.com/api/stats/watchtime)
+    Request Method: POST
+    state=paused
+    volume=1
+    len=205.752
+    cplayer=UNIPLAYER
+    ```
+
+2. Мониторинг качества стриминга (QoE)
+    ```text
+    Request URL: [https://music.youtube.com/api/stats/qoe](https://music.youtube.com/api/stats/qoe)
+    Request Method: POST
+    event=streamingstats
+    fmt=134
+    afmt=140
+    cver=1.20260908.14.00
+    ```
+
+3. Оценка трека (Положительная / Лайк)
+    ```text
+    Request URL: [https://music.youtube.com/youtubei/v1/like/like?prettyPrint=false](https://music.youtube.com/youtubei/v1/like/like?prettyPrint=false)
+    Request Method: POST
+    Authorization: SAPISIDHASH 1789137957_6237b73167f1cf8de...
+    ```
+
+4. Оценка трека (Негативная / Дизлайк)
+    ```text
+    Request URL: [https://music.youtube.com/youtubei/v1/like/dislike?prettyPrint=false](https://music.youtube.com/youtubei/v1/like/dislike?prettyPrint=false)
+    Request Method: POST
+    Authorization: SAPISIDHASH 1789137977_fa0d832b8e58fc723...
+    ```
+
+5. Запрос аудиопотока и метаданных (Player API)
+    ```text
+    Request URL: [https://music.youtube.com/youtubei/v1/player?prettyPrint=false](https://music.youtube.com/youtubei/v1/player?prettyPrint=false)
+    Request Method: POST
+    videoId=E5TGGkhcc-E
+    clientName=WEB_REMIX
+    ```
+
+---
+
+## 2. Сравнение двух сайтов
+
+Сравнивая стриминг YouTube Music и классический маркетплейс Ozon, можно увидеть принципиальную разницу в архитектуре аналитики. На YouTube Music генерируется значительно больше фоновых событий, поскольку плеер непрерывно шлет пинги телеметрии (watchtime, qoe) для контроля стабильности аудиопотока. На Ozon запросы отправляются преимущественно дискретно — в ответ на конкретные действия пользователя, такие как клики по каталогу или переход к оформлению заказа. Что касается источников трафика, на YouTube Music внешний источник сессии с высокой вероятностью попадет в `(not set)`, так как в ссылках отсутствуют внешние UTM-метки, а заголовок Referer указывает на сам сервис. На Ozon вероятность зафиксировать определенный источник (`set`) выше, поскольку маркетплейс использует мощную систему кросс-доменного отслеживания через куки, склеивая визит с предыдущими переходами по рекламе.
+
+---
+
+## 3. Точка разрыва и её проверка
+
+**Точка разрыва из CJM:**
+Срыв воспроизведения при попытке запуска трека. Пользователь нажимает кнопку Play, но POST-запрос к медиа-серверу возвращает ошибку (например, статус `403 Forbidden` из-за региональных ограничений или `404 Not Found`). Музыка не начинает играть, интерфейс зависает, и слушатель разочарованно покидает платформу.
