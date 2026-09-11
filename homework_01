@@ -38,12 +38,12 @@
     Authorization: SAPISIDHASH 1789137977_fa0d832b8e58fc723...
     ```
 
-5. Отслеживание смены URL (Kaspersky модуль)
+5. Запрос аудиопотока и метаданных (Player API)
     ```text
-    Request URL: [https://gc.kis.v2.scr.kaspersky-labs.com/wsm.onHashChange](https://gc.kis.v2.scr.kaspersky-labs.com/wsm.onHashChange)
+    Request URL: [https://music.youtube.com/youtubei/v1/player?prettyPrint=false](https://music.youtube.com/youtubei/v1/player?prettyPrint=false)
     Request Method: POST
-    Referer: [https://music.youtube.com/](https://music.youtube.com/)
-    tm=2026-09-11T14:3A45:3A19.626Z
+    videoId=E5TGGkhcc-E
+    clientName=WEB_REMIX
     ```
 
 ---
