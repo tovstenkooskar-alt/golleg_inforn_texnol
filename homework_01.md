@@ -2,8 +2,6 @@
 
 ## 1. Карта событий на втором сайте (YouTube Music)
 
-В качестве второго сайта для анализа выбран стриминговый сервис YouTube Music. Зафиксировано 5 ключевых событий (через Fetch/XHR во вкладке Network).
-
 1. Телеметрия воспроизведения трека (Watchtime)
     ```text
     Request URL: [https://music.youtube.com/api/stats/watchtime](https://music.youtube.com/api/stats/watchtime)
