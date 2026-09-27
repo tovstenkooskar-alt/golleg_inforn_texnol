@@ -7,7 +7,7 @@
 | Фамилия, имя, отчество | Товстенко Оскар |
 | Группа | 9\2-РПО-25\1 |
 | Тема работы | Анализ воронки цифрового продукта и структура Google Analytics 4|
-| Дата сдачи |  |
+| Дата сдачи |19.09.26|
 | Ветка | `hw-02` |
 
 ## Часть 1. Исследование воронки
@@ -122,11 +122,12 @@
 
 ### 2.3. Скриншоты
 
-*(Вставь сюда ссылки на скриншоты из своего вордовского файла в формате Markdown)*[cite: 5, 6]
+![Создание Analytics Account](../aseets/Создание%20Analytics%20Account.png)
 
-```markdown
-![Создание Analytics Account](screens/01-analytics-account.png)
-![Ресурс: часовой пояс и валюта](screens/02-property.png)
-![Выбор бизнес-целей](screens/03-business-goals.png)
-![Веб-поток: Website URL, Stream name, Enhanced Measurement](screens/04-web-stream.png)
-![Web stream details с Measurement ID](screens/05-measurement-id.png)
+![Ресурс: часовой пояс и валюта](../aseets/часовой%20пояс%20и%20валюта.png)
+
+![Выбор бизнес-целей](../aseets/Выбор%20бизнес-целей.png)
+
+![Веб-поток: Website URL, Stream name, Enhanced Measurement](../aseets/Вебпоток.png)
+
+![Web stream details с Measurement ID](../aseets/Web%20stream%20details.png)
